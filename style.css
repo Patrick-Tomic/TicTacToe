@@ -7,7 +7,7 @@ body{
     background-color: var(--colorA);;
 }
 :root{
-    --colorA:#6F00FF;
+    --colorA:#89CFF0;
 }
 .container{
     background-color: white;

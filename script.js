@@ -4,14 +4,25 @@
 
 
 const gameBoard = (()=>{
+
     const build = (array)=>{
+      let count =0;
         const body = document.querySelector('body');
         const container= document.querySelector('.container');
         for(let i = 0; i<array.length;i++){
             const cell  = document.createElement('div');
-            cell.setAttribute('style','height:10vh; width:10vw;');
+            
           cell.innerHTML = array[i];
-         
+          cell.addEventListener('mouseover',()=>{cell.style.background = 'grey';});
+          cell.addEventListener('mouseleave',()=>{cell.style.background='white';});
+          cell.addEventListener('click',()=>{
+            if(count%2==0){
+              cell.innerHTML = 'X';
+            }else{
+              cell.innerHTML = 'O'
+            }
+            count++;
+          });
           if(i==1||i==7){
             cell.setAttribute('style','border-right:1px solid black; border-left:1px solid black;');
             
