@@ -4,23 +4,34 @@
 
 
 const gameBoard = (()=>{
-
+  let gameArray = ['','','','','','','','',''];
+  
     const build = (array)=>{
       let count =0;
         const body = document.querySelector('body');
         const container= document.querySelector('.container');
         for(let i = 0; i<array.length;i++){
             const cell  = document.createElement('div');
-            
-          cell.innerHTML = array[i];
+            const error = document.querySelector('.errorMessage');
+          
           cell.addEventListener('mouseover',()=>{cell.style.background = 'grey';});
           cell.addEventListener('mouseleave',()=>{cell.style.background='white';});
           cell.addEventListener('click',()=>{
-            if(count%2==0){
-              cell.innerHTML = 'X';
+            if(array[i]=='X'||array[i]=='O'){
+              
+              error.style.display = 'block';
             }else{
-              cell.innerHTML = 'O'
+              error.style.display ='none';
+            if(count%2==0){
+              array.splice(i,1,'X');
+              
+              cell.innerHTML = array[i];
+            }else{
+              array.splice(i,1,'O');
+              cell.innerHTML = array[i];
+              
             }
+          }
             count++;
           });
           if(i==1||i==7){
@@ -31,9 +42,10 @@ const gameBoard = (()=>{
           }else if(i==4){
             cell.setAttribute('style','border:1px solid black;');
           }
+          cell.innerHTML = array[i];
             container.appendChild(cell);
         }
-        body.append(container);
+      
     }
     return {build};
 })();
