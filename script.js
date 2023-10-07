@@ -1,11 +1,45 @@
 
 
-/* var gameArray = ['','','','','','','','','']; */
 
-
+let gameArray = ['','','','','','','','',''];
+const winner = (()=>{
+  const check = (array )=>{
+    let isTrue = false;
+    let Xcount =0;
+    let Ocount = 0;
+    for(let i=0;i<array.length;i++){
+      if(i+1%3==0 && Xcount!=3 ||i+1%3==0 && Ocount!=3){
+        Xcount=0;
+        Ocount=0;
+      }
+     else {
+      if(array[i]=="X"){
+        Xcount++;
+        
+     }
+     else if(array[i]=='O'){
+        Ocount++;
+        
+     }
+     if(Xcount==3){
+      console.log('Player X wins');
+      isTrue=true;
+     }else if(Ocount==3){
+      console.log("player O wins!");
+      isTrue=true
+     }
+    }
+  }
+  if(isTrue==true)return;
+  Xcount=0;
+  Ocount=0;
+ 
+}
+  return {check};
+})();
 const gameBoard = (()=>{
-  let gameArray = ['','','','','','','','',''];
-  
+   
+
     const build = (array)=>{
       let count =0;
         const body = document.querySelector('body');
@@ -24,13 +58,15 @@ const gameBoard = (()=>{
               error.style.display ='none';
             if(count%2==0){
               array.splice(i,1,'X');
-              
+               winner.check(gameArray);
               cell.innerHTML = array[i];
             }else{
               array.splice(i,1,'O');
+              winner.check(gameArray);
               cell.innerHTML = array[i];
               
             }
+            
           }
             count++;
           });
@@ -44,13 +80,16 @@ const gameBoard = (()=>{
           }
           cell.innerHTML = array[i];
             container.appendChild(cell);
+            
         }
-      
+        
     }
+  
     return {build};
 })();
 
-gameBoard.build(['','','','','','','','','']);
+gameBoard.build(gameArray);
+
 
 /* const gameArray = (()=>{
     
