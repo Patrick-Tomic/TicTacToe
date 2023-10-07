@@ -4,37 +4,34 @@
 let gameArray = ['','','','','','','','',''];
 const winner = (()=>{
   const check = (array )=>{
-    let isTrue = false;
-    let Xcount =0;
-    let Ocount = 0;
-    for(let i=0;i<array.length;i++){
-      if(i+1%3==0 && Xcount!=3 ||i+1%3==0 && Ocount!=3){
-        Xcount=0;
-        Ocount=0;
+    isTrue = false;
+   const win= [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [2,4,6],
+    [0,4,8]
+   ];
+   for(let i=0;i<8;i++){
+      let winCondition = win[i];
+      let a = array[winCondition[0]];
+      let b = array[winCondition[1]];
+      let c = array[winCondition[2]];
+      if(a==''||b==''||c==''){
+        continue;
+      }else if(a==b &&b==c){
+        isTrue=true;
+        break;
       }
-     else {
-      if(array[i]=="X"){
-        Xcount++;
-        
-     }
-     else if(array[i]=='O'){
-        Ocount++;
-        
-     }
-     if(Xcount==3){
-      console.log('Player X wins');
-      isTrue=true;
-     }else if(Ocount==3){
-      console.log("player O wins!");
-      isTrue=true
-     }
-    }
+   }
+   if(isTrue==true){
+    console.log('Winner!');
   }
-  if(isTrue==true)return;
-  Xcount=0;
-  Ocount=0;
- 
-}
+     }
+
   return {check};
 })();
 const gameBoard = (()=>{
