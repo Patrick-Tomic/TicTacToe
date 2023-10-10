@@ -1,10 +1,9 @@
-
-
-
 let gameArray = ['','','','','','','','',''];
 const winner = (()=>{
+
   const check = (array )=>{
     isTrue = false;
+     const container = document.querySelector('.container');
    const win= [
     [0,1,2],
     [3,4,5],
@@ -23,13 +22,21 @@ const winner = (()=>{
       if(a==''||b==''||c==''){
         continue;
       }else if(a==b &&b==c){
-        isTrue=true;
-        break;
+       let p= document.createElement('h3');
+       p.textContent='Player '+array[winCondition[0]]+ ' is the Winner!';
+         const endPoint = document.createElement('div');
+          endPoint.setAttribute('style',"display:flex;flex-direction:column;align-items:center; justify-content:center; position:absolute; width:30vw;  height:35vh; border: 1px solid black; background-color:#318CE7;");
+          const resetButton = document.createElement('button');
+          resetButton.addEventListener('click',()=>{
+            
+            window.location.reload()});
+          resetButton.textContent = 'restart';
+          endPoint.appendChild(p);
+          endPoint.appendChild(resetButton);
+         container.append(endPoint);
       }
    }
-   if(isTrue==true){
-    console.log('Winner!');
-  }
+     
      }
 
   return {check};
@@ -39,8 +46,10 @@ const gameBoard = (()=>{
 
     const build = (array)=>{
       let count =0;
+      
         const body = document.querySelector('body');
         const container= document.querySelector('.container');
+        
         for(let i = 0; i<array.length;i++){
             const cell  = document.createElement('div');
             const error = document.querySelector('.errorMessage');
@@ -55,7 +64,7 @@ const gameBoard = (()=>{
               error.style.display ='none';
             if(count%2==0){
               array.splice(i,1,'X');
-               winner.check(gameArray);
+              winner.check(gameArray);
               cell.innerHTML = array[i];
             }else{
               array.splice(i,1,'O');
@@ -79,6 +88,7 @@ const gameBoard = (()=>{
             container.appendChild(cell);
             
         }
+      
         
     }
   

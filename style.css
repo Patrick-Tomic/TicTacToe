@@ -5,10 +5,31 @@
 }
 body{
     background-color: var(--colorA);;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    
 }
 :root{
     --colorA:#89CFF0;
 }
+.selection{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    height: 100vh;
+}
+form{
+    display: flex;
+    flex-direction: column;
+     
+}
+ 
+.flexChild{
+    display: flex;
+   
+}
+ 
 .container{
     background-color: white;
     display: grid;
@@ -16,7 +37,7 @@ body{
     grid-template-rows: 1fr 1fr 1fr;
     width:30vw;
     height:40vh;
-    margin-left: 30vw;
+    margin-left: 20vw;
     margin-top: 20vh;
 }
 .errorMessage{
