@@ -4,6 +4,7 @@
 
 }
 body{
+    
     background-color: var(--colorA);;
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -24,23 +25,32 @@ form{
     flex-direction: column;
      
 }
- 
+ #game{
+   display: grid;
+   grid-template-columns: repeat(2,1fr);
+    
+   height: 100vh;
+ }
 .flexChild{
     display: flex;
    
 }
  
 .container{
-    background-color: white;
+    background-color: var(--colorA);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width:30vw;
-    height:40vh;
-    margin-left: 20vw;
-    margin-top: 20vh;
+    gap:10px;
+    width: 33vw;
+    height: 50vh;
+   margin-right: 10vw;
+    
 }
 .errorMessage{
+    font-size:25px;
     color: red;
     display: none;
+    margin-bottom: 25vh;
+    margin-left: 5px;
 }

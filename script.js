@@ -24,12 +24,14 @@ const winner = (()=>{
       }else if(a==b &&b==c){
        let p= document.createElement('h3');
        p.textContent='Player '+array[winCondition[0]]+ ' is the Winner!';
-         const endPoint = document.createElement('div');
-          endPoint.setAttribute('style',"display:flex;flex-direction:column;align-items:center; justify-content:center; position:absolute; width:30vw;  height:35vh; border: 1px solid black; background-color:#318CE7;");
+         const endPoint = document.createElement('form');
+          endPoint.setAttribute('style',"display:flex;flex-direction:column;align-items:center; justify-content:center; position:absolute; width:33vw;  height:50vh; border: 1px solid black; background-color:#318CE7;");
           const resetButton = document.createElement('button');
+          resetButton.setAttribute('type','submit');
           resetButton.addEventListener('click',()=>{
             
-            window.location.reload()});
+            gameArray = ['','','','','','','','',''];
+          });
           resetButton.textContent = 'restart';
           endPoint.appendChild(p);
           endPoint.appendChild(resetButton);
@@ -76,14 +78,9 @@ const gameBoard = (()=>{
           }
             count++;
           });
-          if(i==1||i==7){
-            cell.setAttribute('style','border-right:1px solid black; border-left:1px solid black;');
-            
-          }else if(i==3||i==5){
-            cell.setAttribute('style','border-bottom:1px solid black;border-top:solid black 1px');
-          }else if(i==4){
-            cell.setAttribute('style','border:1px solid black;');
-          }
+          
+            cell.setAttribute('style','width:10vw; height:15vh;display:flex; justify-content:center; align-items:center; border:1px solid black; background-color:white; border-radius:25px;');
+          
           cell.innerHTML = array[i];
             container.appendChild(cell);
             
